@@ -64,6 +64,22 @@ header h1 {
   outline: none;
 }
 
+.note-control {
+  background-color: transparent;
+  width: 1.5rem;
+  height: 1.5rem; 
+  position: absolute;
+  bottom: 0.5rem;
+}
+
+.delete {
+  right: 0.5rem;
+}
+
+.add {
+  left: 0.5rem;
+}
+
 footer {
   position: fixed;
   bottom: 0;
