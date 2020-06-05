@@ -2,11 +2,19 @@ import React, {useState} from 'react';
 
 function Note(props) {
 
-    const [note, setNote] = useState("");
+    const [note, setNote] = useState({
+        content: "",
+        dateCreated: new Date().toLocaleString()
+    });
 
     function handleInput(event) {
         const content = event.target.value;
-        setNote(content);
+        setNote(prevNote => {
+            return {
+                ...prevNote, 
+                content: content
+            }
+        });
     }
 
     function handleDeleteClick() {
@@ -18,11 +26,11 @@ function Note(props) {
     }
 
     return (
-        <div className="note" draggable="true" onContextMenu>
-            <textarea onInput={handleInput} className="note-content">{note}</textarea>
+        <div className="note" onContextMenu>
+            <textarea onInput={handleInput} className="note-content">{note.content}</textarea>
             <button className="note-control add" onClick={handleAddClick}>+</button>
+            <p></p>
             <button className="note-control delete" onClick={handleDeleteClick}>x</button>
-        
         </div>
     )
 }
