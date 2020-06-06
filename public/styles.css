@@ -4,6 +4,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: midnightblue;
+  background: url(./images/bgr6.png) repeat;
 }
 
 * {
@@ -20,7 +22,6 @@ body {
 .App {
   width: 100vw;
   height: 100vh;
-  background: url(./images/bgr6.png) repeat;
   padding: 6rem 1.5rem 1rem;
 }
 

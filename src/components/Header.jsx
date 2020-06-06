@@ -1,4 +1,5 @@
 import React from 'react';
+import BackgroundPicker from './BackgroundPicker';
 
 function Header() {
     return (
@@ -6,6 +7,7 @@ function Header() {
         <h1>
             Mynote
         </h1>
+        <BackgroundPicker />
     </header>
     );
 }

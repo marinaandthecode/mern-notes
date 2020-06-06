@@ -15,7 +15,6 @@ function App() {
 
   // function updateNote(id)
 
-//  function changeBgr
 
   function deleteNote(id) {
     
@@ -25,6 +24,10 @@ function App() {
       });
     })
   }
+
+  // function changeBgr() {
+
+  // }
 
   return (
     <div className="App">
