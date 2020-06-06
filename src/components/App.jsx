@@ -13,8 +13,12 @@ function App() {
     });
   }
 
+  // function updateNote(id)
+
+//  function changeBgr
+
   function deleteNote(id) {
-    console.log(id);
+    
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
@@ -26,7 +30,7 @@ function App() {
     <div className="App">
       <Header />
       {notes.map((noteItem, index) => {
-        return <Note key={noteItem.dateCreated} content={noteItem.content} id={index} onAdd={addNote} onDelete={deleteNote}/>
+        return <Note key={noteItem.dateCreated} id={index} onAdd={addNote} onDelete={deleteNote}/>
       })}
       <Footer />
     </div>
@@ -35,10 +39,10 @@ function App() {
 
 export default App;
 
-// 1. Add handleChange fn (update note) and pass as props 
+// 1. Add handleChange fn (update note) and pass as props ! Lift state up from Note
 // 2. Add handleDelete fn (delete note) and pass as props 
 // 3. Add addnote fn (create note) and pass as props 
 // 4. Add notes state []
 // 5. Drag n drop 
-// 6. Note color picker
+// 6. Note color picker - separate component 
 // 7. Bgrset
