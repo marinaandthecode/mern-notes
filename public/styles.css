@@ -29,6 +29,9 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  display: flex; 
+  justify-content: space-between;
+  z-index: 100;
   width: 100vw;
   padding: 0.7rem 2.5rem;
   background-color: #0f4c81;
@@ -80,6 +83,21 @@ header h1 {
 
 .add {
   left: 0.5rem;
+}
+
+.color-picker {
+  position: absolute;
+  z-index: 102;
+  width: 10rem;
+  height: 3.5rem;
+  display: flex; 
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid slategrey ; 
+}
+
+.color-picker input {
+  margin-left: 1rem;
 }
 
 footer {

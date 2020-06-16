@@ -4,8 +4,20 @@ import Note from './Note';
 import Footer from './Footer';
 
 function App() {
+  
+  // notes array
+  const defaultNotes = [
+    {
+      content: "Welcome to Mynote! This is your first note", 
+      dateCreated: new Date().toLocaleString()
+    }, 
+    {
+      content: "You can edit this text", 
+      dateCreated: new Date().toLocaleString()
+    }
+  ]
 
-  const [notes, setNotes] = useState([{content: "Hello, it's your first note!", dateCreated: new Date().toLocaleString()}]); 
+  const [notes, setNotes] = useState(defaultNotes);
 
   function addNote(newNote) {
     setNotes(prevNotes => {
@@ -13,7 +25,11 @@ function App() {
     });
   }
 
-  // function updateNote(id)
+  // function updateNote(newContent, id) {
+  //   setNotes(prevNotes => {
+  //     return [...prevNotes, [prevNotes[id].content] = newContent];
+  //   });
+  // }
 
 
   function deleteNote(id) {
@@ -33,7 +49,14 @@ function App() {
     <div className="App">
       <Header />
       {notes.map((noteItem, index) => {
-        return <Note key={noteItem.dateCreated} id={index} onAdd={addNote} onDelete={deleteNote}/>
+        return <Note 
+          key={noteItem.dateCreated} 
+          id={index} 
+          onAdd={addNote} 
+          onDelete={deleteNote} 
+          // onEdit={updateNote} 
+          content={noteItem.content}
+        />
       })}
       <Footer />
     </div>
@@ -49,3 +72,10 @@ export default App;
 // 5. Drag n drop 
 // 6. Note color picker - separate component 
 // 7. Bgrset
+
+// Probably create notes list in App component like array of objects and pass them as props to "NoteItem"
+// So each object(note) is created in addNote fuction of App which is triggered in Note. Only content is added from Note
+//Try main reset css in file and inline style for components
+// use destructuring {content, date, color} = props.note in note component 
+// notes.filter(note => note.id !== id )
+//react router dom, axios

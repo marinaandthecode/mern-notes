@@ -1,51 +1,65 @@
 import React, {useState} from 'react';
+import ColorPicker from './ColorPicker';
 
 function Note(props) {
+
+    const {id, onAdd, onDelete} = props;
 
     const [note, setNote] = useState({
         content: "",
         dateCreated: new Date().toLocaleString(), 
-        noteColor: "#eee8aa"
     });
+
+    const [color, setColor] = useState("#eee8aa");
 
     function handleInput(event) {
         const content = event.target.value;
+        // onEdit(content, id);
         setNote(prevNote => {
             return {
-                ...prevNote, 
-                content: content
+            ...prevNote,
+            content: content
             }
         });
     }
 
     function handleDeleteClick() {
-        props.onDelete(props.id);
+        onDelete(id);
     }
 
     function handleAddClick() {
-        props.onAdd(note);
+        onAdd(note);
     }
 
     function handleColorInput(event) {
         const noteColor = event.target.value; 
-        setNote(prevNote => {
+        setColor(noteColor);
+    }
+
+    const [isShown, setIsShown] = useState(false);
+    const [position, setPosition] = useState({left : 0, top : 0, visibility : "hidden"});
+
+    function handleContextMenu(event) {
+        event.preventDefault();
+        setIsShown(true);
+        const left = event.pageX;
+        const top = event.pageY;
+
+        setPosition(prevPosition => {
             return {
-                ...prevNote,
-                noteColor: noteColor
+                ...prevPosition,
+                left: left,
+                top: top,
+                visibility: "visible"
             }
         })
-
     }
 
     return (
-        <div className="note" style={{backgroundColor: note.noteColor}} onContextMenu>
+        <div className="note" style={{backgroundColor: color}} onContextMenu={handleContextMenu}>
             <textarea onInput={handleInput} className="note-content">{note.content}</textarea>
             <button className="note-control add" onClick={handleAddClick}>+</button>
-            
-            {/* TODO: create ColorPicker component - displayonContextMenu */}
-            <label style={{fontSize: "0.7rem"}} for="note-bgr">Choose color</label>
-            <input type="color" name="note-bgr" value="#667482" onInput={handleColorInput}></input>
-
+            {isShown && <ColorPicker onColorChange={handleColorInput} position={position}/>}
             <button className="note-control delete" onClick={handleDeleteClick}>x</button>
         </div>
     )

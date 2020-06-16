@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'; 
 
 function BackgroundPicker(props) {
-    const [background, setBackground] = useState('bgr6.png')
+    const [background, setBackground] = useState('bgr1.png')
 
     const bgrArray = ['bgr1.png', 'bgr2.png', 'bgr3.png', 'bgr4.png', 'bgr5.png', 'bgr6.png'];
 
@@ -15,9 +15,9 @@ function BackgroundPicker(props) {
     });
 
     return (
-        <select selected={background} id="backgrounds" name="backgrounds" onChange={handleBgrChange} >
+        <select id="backgrounds" className="bgr-picker" name="backgrounds" onChange={handleBgrChange} >
         {bgrArray.map((bgr, index) => {
-            return <option value={bgr}>{index+1}</option>
+            return <option style={{backgroundImage: `url(./images/${bgr}`}} value={bgr}>{index+1}</option>
         })}
         </select>
     )
