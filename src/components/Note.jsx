@@ -12,6 +12,8 @@ function Note(props) {
 
     const [color, setColor] = useState("#eee8aa");
 
+
+
     function handleInput(event) {
         const content = event.target.value;
         // onEdit(content, id);
@@ -34,6 +36,7 @@ function Note(props) {
     function handleColorInput(event) {
         const noteColor = event.target.value; 
         setColor(noteColor);
+        setIsShown(false);
     }
 
     const [isShown, setIsShown] = useState(false);
@@ -42,8 +45,8 @@ function Note(props) {
     function handleContextMenu(event) {
         event.preventDefault();
         setIsShown(true);
-        const left = event.pageX;
-        const top = event.pageY;
+        const left = event.offsetX;
+        const top = event.offsetY;
 
         setPosition(prevPosition => {
             return {
